@@ -9,3 +9,8 @@ jobs:
         run: echo "Hello, World!"
       - name: Print your name
         run: echo "yug"
+  say-bye:
+     runs-on: ubuntu-Latest
+     steps:
+      -name: say bye
+        run: echo "byee from 2nd job"
