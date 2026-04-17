@@ -1,5 +1,5 @@
 name: My First Workflow
-on: push
+on: [push, pull_request ]
 
 jobs:
   say-hello:
@@ -12,5 +12,5 @@ jobs:
   say-bye:
      runs-on: ubuntu-Latest
      steps:
-      -name: say bye
-        run: echo "byee from 2nd job"
+      - name: say bye
+        run: echo "Goodbye, World!"
