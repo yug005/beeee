@@ -1,16 +1,18 @@
 name: My First Workflow
-on: [push, pull_request ]
+on: [push, pull_request]
 
 jobs:
   say-hello:
+    needs: say-bye   
     runs-on: ubuntu-latest
     steps:
       - name: Say Hello
         run: echo "Hello, World!"
       - name: Print your name
         run: echo "yug"
+
   say-bye:
-     runs-on: ubuntu-Latest
-     steps:
+    runs-on: ubuntu-latest   
+    steps:
       - name: say bye
         run: echo "Goodbye, World!"
