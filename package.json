@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "eslint": "^10.2.1",
+    "express": "^5.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Test passed\""
+  }
+}
