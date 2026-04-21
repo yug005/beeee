@@ -43,3 +43,11 @@ jobs:
 
       - name: Run tests
         run: npm run test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: deploy
+        run: echo "Deployed"
