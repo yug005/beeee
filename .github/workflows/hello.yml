@@ -1,53 +1,92 @@
+# name: My First Workflow
+
+# # on: [push, pull_request]
+# on: push
+
+# jobs:
+#   # say-hello:
+#   #   runs-on: ubuntu-latest
+#   #   needs: say-bye
+#   #   steps:
+#   #     - name: Print message
+#   #       run: echo "Hello, Github Actions!"
+        
+#   #     - name: Print my name
+#   #       run: echo "Vansh"
+  
+#   # say-bye:
+#   #   runs-on: ubuntu-latest
+
+#   #   steps:
+#   #     - name: Print message
+#   #       run: echo "GoodBye from second job"
+#   test:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v4
+      
+#       - name: Setup node
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 18
+
+#       - name: Check node version
+#         run: node -v
+      
+#       - name: Check npm version
+#         run: npm -v
+      
+#       - name: Install npm dependencies
+#         run: npm i
+
+#       - name: Run tests
+#         run: npm run test
+
+#   deploy:
+#     runs-on: ubuntu-latest
+#     needs: test
+
+#     steps:
+#       - name: deploy
+#         run: echo "Deployed"
+
+
 name: My First Workflow
 
-# on: [push, pull_request]
 on: push
 
-jobs:
-  # say-hello:
-  #   runs-on: ubuntu-latest
-  #   needs: say-bye
-  #   steps:
-  #     - name: Print message
-  #       run: echo "Hello, Github Actions!"
-        
-  #     - name: Print my name
-  #       run: echo "Vansh"
-  
-  # say-bye:
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #     - name: Print message
-  #       run: echo "GoodBye from second job"
+jobs: 
   test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup node
         uses: actions/setup-node@v4
-        with:
-          node-version: 18
+        with: 
+          node-version: 24
+          cache: "npm"
 
-      - name: Check node version
-        run: node -v
-      
-      - name: Check npm version
-        run: npm -v
-      
-      - name: Install npm dependencies
-        run: npm i
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run ESLint
+        run: npm run lint
 
       - name: Run tests
         run: npm run test
 
-  deploy:
+      - name: Build project
+        run: npm run build
+
+  deploy-app:
     runs-on: ubuntu-latest
     needs: test
-
+    
     steps:
       - name: deploy
-        run: echo "Deployed"
+        run: echo "deploying"
